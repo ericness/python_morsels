@@ -76,9 +76,9 @@ class CDTests(unittest.TestCase):
             self.assertTrue(exists(directory), "given directory was deleted!")
         self.assertTrue(exists(directory), "given directory was deleted!")
         with cd(directory):
-            with open('hello.txt', mode='wt') as f:
-                f.write('hello!')
-            filename = abspath('hello.txt')
+            with open("hello.txt", mode="wt") as f:
+                f.write("hello!")
+            filename = abspath("hello.txt")
         self.assertTrue(exists(filename), "file in directory was deleted!")
 
     def test_initialization_before_context_entering(self):
@@ -93,24 +93,22 @@ class CDTests(unittest.TestCase):
         self.assertEqual(abspath(os.getcwd()), abspath(new_original))
 
     # To test the Bonus part of this exercise, comment out the following line
-    @unittest.expectedFailure
     def test_no_argument_given(self):
         original = os.getcwd()
         dirs = cd()
         with dirs:
             self.assertNotEqual(abspath(os.getcwd()), abspath(original))
             self.assertEqual(os.listdir(), [])
-            with open('hello.txt', mode='wt') as f:
-                f.write('hello!')
-            full_path = abspath('hello.txt')
+            with open("hello.txt", mode="wt") as f:
+                f.write("hello!")
+            full_path = abspath("hello.txt")
             self.assertNotEqual(dirname(full_path), abspath(original))
-            with open(full_path, mode='rt') as f:
-                self.assertEqual(f.read(), 'hello!')
+            with open(full_path, mode="rt") as f:
+                self.assertEqual(f.read(), "hello!")
         self.assertEqual(abspath(os.getcwd()), abspath(original))
         self.assertFalse(exists(full_path), "temporary directory not deleted")
 
     # To test the Bonus part of this exercise, comment out the following line
-    @unittest.expectedFailure
     def test_has_current_and_previous_attributes(self):
         directory = self.get_temp_dir()
         original = os.getcwd()
@@ -121,7 +119,6 @@ class CDTests(unittest.TestCase):
         self.assertEqual(abspath(directory), abspath(str(dirs.current)))
 
     # To test the Bonus part of this exercise, comment out the following line
-    @unittest.expectedFailure
     def test_enter_and_exit_methods(self):
         directory = self.get_temp_dir()
         new_original = self.get_temp_dir()
