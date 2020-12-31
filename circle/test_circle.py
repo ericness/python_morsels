@@ -28,13 +28,12 @@ class CircleTests(unittest.TestCase):
 
     def test_string_representation(self):
         circle = Circle(2)
-        self.assertEqual(str(circle), 'Circle(2)')
-        self.assertEqual(repr(circle), 'Circle(2)')
+        self.assertEqual(str(circle), "Circle(2)")
+        self.assertEqual(repr(circle), "Circle(2)")
         circle.radius = 1
-        self.assertEqual(repr(circle), 'Circle(1)')
+        self.assertEqual(repr(circle), "Circle(1)")
 
     # To test the Bonus part of this exercise, comment out the following line
-    @unittest.expectedFailure
     def test_diameter_and_area_change_based_on_radius(self):
         circle = Circle(2)
         self.assertEqual(circle.diameter, 4)
@@ -43,7 +42,6 @@ class CircleTests(unittest.TestCase):
         self.assertEqual(circle.area, math.pi * 9)
 
     # To test the Bonus part of this exercise, comment out the following line
-    @unittest.expectedFailure
     def test_diameter_changeable_but_area_not(self):
         circle = Circle(2)
         self.assertEqual(circle.diameter, 4)
@@ -54,7 +52,6 @@ class CircleTests(unittest.TestCase):
             circle.area = 3
 
     # To test the Bonus part of this exercise, comment out the following line
-    @unittest.expectedFailure
     def test_no_negative_radius(self):
         with self.assertRaises(ValueError) as context:
             circle = Circle(-2)
