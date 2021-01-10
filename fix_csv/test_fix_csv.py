@@ -81,7 +81,6 @@ class FixCSVTests(unittest.TestCase):
                 run_program(f'fix_csv.py {old} {new} {old}')
 
     # To test the Bonus part of this exercise, comment out the following line
-    @unittest.expectedFailure
     def test_in_delimiter_and_in_quote(self):
         old_contents = dedent("""
             2012 Lexus "LFA"
@@ -109,7 +108,6 @@ class FixCSVTests(unittest.TestCase):
                 self.assertEqual(expected2, new_file.read())
 
     # To test the Bonus part of this exercise, comment out the following line
-    @unittest.expectedFailure
     def test_autodetect_input_format(self):
         contents1 = dedent("""
             '2012' 'Lexus' 'LFA'
