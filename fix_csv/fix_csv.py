@@ -1,20 +1,20 @@
 import argparse
-import re
-from typing import List
-
-DELIMITER_REGEX = r"[\w\s]+(([\W\S])[\w\s]+)+"
+import csv
+from typing import List, Tuple
 
 
-def determine_delimiter(lines: List[str]) -> str:
+def determine_delimiter(lines: List[str]) -> Tuple[str, str]:
     """Determine the delimiter used in the data file"""
-    result = re.fullmatch(DELIMITER_REGEX, lines[0])
-    return "|"
+    dialect = csv.Sniffer().sniff("\n".join(lines[: max(len(lines), 5)]))
+    return str(dialect.delimiter), str(dialect.quotechar)
 
 
 def process_line(line: str, delimiter: str, quote: str) -> str:
     """Process a line in the CSV file"""
     elements = line.rstrip().split(delimiter)
-    quoted_elements = [f"{quote}{e}{quote}" if delimiter in e else e for e in elements]
+    quoted_elements = [
+        f'"{e}"' if delimiter in e else e for e in elements
+    ]
     return ",".join(quoted_elements)
 
 
@@ -35,16 +35,15 @@ if __name__ == "__main__":
     parser.add_argument("input_csv", type=str, help="Input CSV file")
     parser.add_argument("output_csv", type=str, help="Output CSV file")
     parser.add_argument("--in-delimiter", type=str)
-    parser.add_argument("--in-quote", type=str, default="\"")
+    parser.add_argument("--in-quote", type=str)
 
     args = parser.parse_args()
 
     lines = read_file(args.input_csv)
 
-    if not args.in_delimiter:
-        delimiter = determine_delimiter(lines)
-    else:
-        delimiter = args.in_delimiter
+    delimiter, quote = determine_delimiter(lines)
+    delimiter = args.in_delimiter if args.in_delimiter else delimiter
+    quote = args.in_quote if args.in_quote else quote
 
-    processed_lines = [process_line(line, delimiter, args.in_quote) for line in lines]
+    processed_lines = [process_line(line, delimiter, quote) for line in lines]
     write_file(processed_lines, args.output_csv)
