@@ -55,7 +55,6 @@ class TimerTests(unittest.TestCase):
         self.assertLess(elapsed1, timer.elapsed)
 
     # To test the Bonus part of this exercise, comment out the following line
-    @unittest.expectedFailure
     def test_runs_recorded(self):
         timer1 = Timer()
         timer2 = Timer()
