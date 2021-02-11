@@ -49,7 +49,6 @@ class MakeFileTests(unittest.TestCase):
             self.assertEqual(contents, 'hello there!')
 
     # To test the Bonus part of this exercise, comment out the following line
-    @unittest.expectedFailure
     def test_allow_specifying_directory(self):
         from tempfile import mkdtemp  # This may be a hint
         directory = mkdtemp()
