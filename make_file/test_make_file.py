@@ -42,7 +42,6 @@ class MakeFileTests(unittest.TestCase):
         self.assertFalse(os.path.isfile(filename))
 
     # To test the Bonus part of this exercise, comment out the following line
-    @unittest.expectedFailure
     def test_allow_file_to_have_initial_contents(self):
         with make_file(contents="hello there!") as filename:
             with open(filename, mode='rt') as my_file:
