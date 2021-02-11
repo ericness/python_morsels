@@ -76,7 +76,6 @@ class TimerTests(unittest.TestCase):
         self.assertTimeEqual(timer2.runs[1], 0.002)
 
     # To test the Bonus part of this exercise, comment out the following line
-    @unittest.expectedFailure
     def test_works_as_decorator(self):
         @Timer
         def wait_randomly(*args, **kwargs):
@@ -90,7 +89,6 @@ class TimerTests(unittest.TestCase):
         self.assertEqual(wait_randomly.runs, [wait_randomly.elapsed])
 
     # To test the Bonus part of this exercise, comment out the following line
-    @unittest.expectedFailure
     def test_stat_recorded(self):
         wait = Timer(sleep)
         wait(0.002)
