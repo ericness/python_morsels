@@ -1,45 +1,39 @@
 import tempfile
+from contextlib import contextmanager
 from typing import Union
 
 
-class make_file:
-    def __init__(
-        self,
-        contents: Union[str, bytes] = None,
-        directory: str = None,
-        mode: str = None,
-        encoding: str = None,
-        newline: str = None,
-    ):
-        self.contents = contents
-        self.contents_mode = "w" if isinstance(contents, str) else "wb"
-        self.open_args = {
-            "dir": directory,
-            "encoding": encoding,
-            "newline": newline,
-        }
-        if mode:
-            self.open_args["mode"] = mode
-        else:
-            self.open_args["mode"] = self.contents_mode
+@contextmanager
+def make_file(
+    contents: Union[str, bytes] = None,
+    directory: str = None,
+    mode: str = None,
+    encoding: str = None,
+    newline: str = None,
+):
+    contents_mode = "w" if isinstance(contents, str) else "wb"
+    open_args = {
+        "dir": directory,
+        "encoding": encoding,
+        "newline": newline,
+    }
+    if mode:
+        open_args["mode"] = mode
+    else:
+        open_args["mode"] = contents_mode
 
-    def __enter__(self) -> str:
-        self.temp_file = tempfile.NamedTemporaryFile(**self.open_args)
-        if self.contents:
+    try:
+        temp_file = tempfile.NamedTemporaryFile(**open_args)
+        if contents:
             with open(
-                self.temp_file.name,
-                self.contents_mode,
-                encoding=self.open_args.get("encoding"),
-                newline=self.open_args.get("newline"),
+                temp_file.name,
+                contents_mode,
+                encoding=open_args.get("encoding"),
+                newline=open_args.get("newline"),
             ) as f:
-                f.write(self.contents)
+                f.write(contents)
 
-        return self.temp_file.name
+        yield temp_file.name
 
-    def __exit__(
-        self,
-        exc_type: Exception = None,
-        exc_value: BaseException = None,
-        traceback=None,
-    ):
-        self.temp_file.close()
+    finally:
+        temp_file.close()
