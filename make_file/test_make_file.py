@@ -58,7 +58,6 @@ class MakeFileTests(unittest.TestCase):
                 self.assertEqual(my_file.read(), 'hi\nthere!')
 
     # To test the Bonus part of this exercise, comment out the following line
-    @unittest.expectedFailure
     def test_allow_specifying_file_options(self):
         with make_file(contents=b"hi\nthere!", mode='wb') as filename:
             with open(filename, mode='rt') as my_file:
