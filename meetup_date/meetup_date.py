@@ -1,8 +1,22 @@
 import calendar
 import datetime
+from enum import IntEnum
+from typing import Union
 
 
-def meetup_date(year: int, month: int, nth: int = 4, weekday: int = 3) -> datetime.date:
+class Weekday(IntEnum):
+    MONDAY = 0
+    TUESDAY = 1
+    WEDNESDAY = 2
+    THURSDAY = 3
+    FRIDAY = 4
+    SATURDAY = 5
+    SUNDAY = 6
+
+
+def meetup_date(
+    year: int, month: int, nth: int = 4, weekday: Union[int, Weekday] = 3
+) -> datetime.date:
     nth_counter = 0
     if nth > 0:
         day_of_month = 1
