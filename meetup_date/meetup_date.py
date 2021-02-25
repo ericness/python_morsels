@@ -1,15 +1,21 @@
+import calendar
 import datetime
 
 
-def meetup_date(year: int, month: int) -> datetime.date:
-    thursday_of_month = 0
-    day_of_month = 1
+def meetup_date(year: int, month: int, nth: int = 4, weekday: int = 3) -> datetime.date:
+    nth_counter = 0
+    if nth > 0:
+        day_of_month = 1
+        increment = 1
+    else:
+        _, day_of_month = calendar.monthrange(year, month)
+        increment = -1
     current_date = None
 
-    while thursday_of_month < 4:
+    while nth_counter < abs(nth):
         current_date = datetime.date(year, month, day_of_month)
-        if current_date.weekday() == 3:
-            thursday_of_month += 1
-        day_of_month += 1
+        if current_date.weekday() == weekday:
+            nth_counter += 1
+        day_of_month += increment
 
     return current_date
