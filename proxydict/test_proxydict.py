@@ -79,7 +79,6 @@ class ProxyDictTests(unittest.TestCase):
         )
 
     # To test the Bonus part of this exercise, comment out the following line
-    @unittest.expectedFailure
     def test_supports_equality(self):
         mapping1 = {'a': 1, 'b': 2}
         mapping2 = {'a': 1}

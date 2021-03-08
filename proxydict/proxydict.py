@@ -1,3 +1,4 @@
+from __future__ import annotations
 from typing import Dict, Any, KeysView, ItemsView, ValuesView, Iterator
 
 
@@ -35,3 +36,8 @@ class ProxyDict:
 
     def __repr__(self) -> str:
         return f"ProxyDict({self.wrapped_dict})"
+
+    def __eq__(self, other: ProxyDict) -> bool:
+        if not isinstance(other, ProxyDict) and not isinstance(other, dict):
+            return False
+        return self.wrapped_dict == {k: v for k, v in other.items()}
