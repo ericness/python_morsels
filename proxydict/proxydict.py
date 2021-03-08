@@ -1,4 +1,4 @@
-from typing import Dict, Any, KeysView
+from typing import Dict, Any, KeysView, ItemsView, ValuesView
 
 
 class ProxyDict:
@@ -13,3 +13,19 @@ class ProxyDict:
 
     def keys(self) -> KeysView:
         return self.wrapped_dict.keys()
+
+    def __len__(self) -> int:
+        return len(self.wrapped_dict)
+
+    def items(self) -> ItemsView:
+        return self.wrapped_dict.items()
+
+    def values(self) -> ValuesView:
+        return self.wrapped_dict.values()
+
+    def get(self, key: Any, default: Any = None) -> Any:
+        try:
+            value = self.wrapped_dict[key]
+            return value
+        except KeyError:
+            return default

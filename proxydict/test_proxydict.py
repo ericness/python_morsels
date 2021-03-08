@@ -53,7 +53,6 @@ class ProxyDictTests(unittest.TestCase):
         self.assertEqual(set(d.keys()), {'a', 'c'})
 
     # To test the Bonus part of this exercise, comment out the following line
-    @unittest.expectedFailure
     def test_items_len_values_items_and_get(self):
         d = ProxyDict({'a': 'b', 'c': 'd'})
         self.assertEqual(set(d.items()), {('a', 'b'), ('c', 'd')})
