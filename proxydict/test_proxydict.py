@@ -64,7 +64,6 @@ class ProxyDictTests(unittest.TestCase):
         self.assertEqual(d.get('d', 'z'), 'z')
 
     # To test the Bonus part of this exercise, comment out the following line
-    @unittest.expectedFailure
     def test_iteration_and_repr(self):
         d = ProxyDict({1: 'a', 3: 'c'})
         e = ProxyDict({'a': 'b', 'c': 'd'})

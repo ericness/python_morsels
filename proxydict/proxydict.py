@@ -1,4 +1,4 @@
-from typing import Dict, Any, KeysView, ItemsView, ValuesView
+from typing import Dict, Any, KeysView, ItemsView, ValuesView, Iterator
 
 
 class ProxyDict:
@@ -29,3 +29,9 @@ class ProxyDict:
             return value
         except KeyError:
             return default
+
+    def __iter__(self) -> Iterator:
+        return iter(self.wrapped_dict)
+
+    def __repr__(self) -> str:
+        return f"ProxyDict({self.wrapped_dict})"
