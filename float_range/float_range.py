@@ -24,3 +24,13 @@ class float_range:
         ):
             yield self.current
             self.current += self.step
+
+    def __len__(self):
+        length = int((self.stop - self.start) // self.step)
+        remainder = (self.stop - self.start) % self.step
+        if length < 0:
+            return 0
+        elif remainder != 0:
+            return length + 1
+        else:
+            return length

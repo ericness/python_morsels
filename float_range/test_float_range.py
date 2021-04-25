@@ -85,7 +85,6 @@ class FloatRangeTests(unittest.TestCase):
         self.assertNotEqual(type(response), tuple)
 
     # To test the Bonus part of this exercise, comment out the following line
-    @unittest.expectedFailure
     def test_has_length(self):
         time = partial(timeit, globals=globals(), number=30)
         small = time("assert len(float_range(1)) == 1")
