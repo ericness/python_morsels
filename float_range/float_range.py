@@ -25,6 +25,15 @@ class float_range:
             yield self.current
             self.current += self.step
 
+    def __reversed__(self):
+        length = len(self)
+        self.current = self.start + (length - 1) * self.step
+        while (self.current >= self.start and self.step >= 0) or (
+                self.current <= self.start and self.step < 0
+        ):
+            yield self.current
+            self.current -= self.step
+
     def __len__(self):
         length = int((self.stop - self.start) // self.step)
         remainder = (self.stop - self.start) % self.step

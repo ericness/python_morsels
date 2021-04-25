@@ -110,7 +110,6 @@ class FloatRangeTests(unittest.TestCase):
         )
 
     # To test the Bonus part of this exercise, comment out the following line
-    @unittest.expectedFailure
     def test_reversed(self):
         r = reversed(float_range(0.5, 7, 0.75))
         self.assertEqual(
