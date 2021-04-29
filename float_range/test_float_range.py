@@ -121,7 +121,6 @@ class FloatRangeTests(unittest.TestCase):
         self.assertEqual(list(reversed(float_range(4, 0, -1))), [1, 2, 3, 4])
 
     # To test the Bonus part of this exercise, comment out the following line
-    @unittest.expectedFailure
     def test_equality(self):
         time = partial(timeit, globals=globals(), number=100)
         small = time(

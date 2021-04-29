@@ -1,3 +1,7 @@
+from __future__ import annotations
+
+from typing import Union
+
 
 class float_range:
     def __init__(self, *args):
@@ -29,7 +33,7 @@ class float_range:
         length = len(self)
         self.current = self.start + (length - 1) * self.step
         while (self.current >= self.start and self.step >= 0) or (
-                self.current <= self.start and self.step < 0
+            self.current <= self.start and self.step < 0
         ):
             yield self.current
             self.current -= self.step
@@ -43,3 +47,14 @@ class float_range:
             return length + 1
         else:
             return length
+
+    def __eq__(self, other: Union[float_range, range]):
+        if isinstance(other, float_range) or isinstance(other, type(range)):
+            if len(self) == len(other) == 0:
+                return True
+            return (
+                self.start == other.start
+                and self.stop == other.stop
+                and self.step == other.step
+            )
+        return False
