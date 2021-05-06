@@ -8,17 +8,21 @@ def sum_timestamps(timestamps: List[str]) -> str:
     minutes = 0
     seconds = 0
 
-    timestamp_regex = re.compile("([0-9]{1,2}):([0-9]{2})")
+    timestamp_regex = re.compile("((?P<hours>[0-9]{1,2}):)?(?P<minutes>[0-9]{1,2}):(?P<seconds>[0-9]{2})")
 
     for timestamp in timestamps:
         matches = re.match(timestamp_regex, timestamp)
-        minutes += int(matches.group(1))
-        seconds += int(matches.group(2))
+        match_groups = matches.groupdict()
+        if match_groups.get("hours"):
+            hours += int(matches.group("hours"))
+        minutes += int(matches.group("minutes"))
+        seconds += int(matches.group("seconds"))
 
     extra_minutes, remaining_seconds = divmod(seconds, 60)
     minutes += extra_minutes
 
-    hours, remaining_minutes = divmod(minutes, 60)
+    extra_hours, remaining_minutes = divmod(minutes, 60)
+    hours += extra_hours
 
     second_str = f"{remaining_seconds:02d}"
     minute_str = (

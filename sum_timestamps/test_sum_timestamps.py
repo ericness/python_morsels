@@ -41,7 +41,6 @@ class SumTimeStampsTests(unittest.TestCase):
         self.assertEqual(sum_timestamps(times2), '10:12:04')
 
     # To test the Bonus part of this exercise, comment out the following line
-    @unittest.expectedFailure
     def test_allow_optional_hour(self):
         self.assertEqual(sum_timestamps(['1:02:01', '04:05']), '1:06:06')
         self.assertEqual(
