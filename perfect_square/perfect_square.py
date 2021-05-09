@@ -1,4 +1,5 @@
 import math
+import decimal
 from numbers import Number
 from typing import SupportsFloat
 
@@ -10,5 +11,8 @@ def is_perfect_square(value: SupportsFloat) -> bool:
     if value < 0:
         return False
 
-    root = math.sqrt(value)
-    return math.ceil(root) ** 2 == value or math.floor(root) ** 2 == value
+    with decimal.localcontext() as c:
+        c.prec = 50
+        decimal_value = decimal.Decimal(value)
+        root = decimal_value.sqrt()
+        return root.to_integral_value() ** 2 == decimal_value

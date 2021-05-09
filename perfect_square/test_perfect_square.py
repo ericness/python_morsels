@@ -43,7 +43,6 @@ class IsPerfectSquareTests(unittest.TestCase):
         self.assertFalse(is_perfect_square(square_number+1))
 
     # To test the Bonus part of this exercise, comment out the following line
-    @unittest.expectedFailure
     def test_really_big_numbers(self):
         n = 838382848348234**2
         m = n**2
