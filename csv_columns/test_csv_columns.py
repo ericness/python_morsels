@@ -59,7 +59,6 @@ class CSVColumnsTests(unittest.TestCase):
         self.assertEqual(csv_columns(csv_file), {'h1': ['1', '2']})
 
     # To test the Bonus part of this exercise, comment out the following line
-    @unittest.expectedFailure
     def test_ordered_dictionary(self):
         csv_data = dedent("""
             Car 1,Car 2,Car 3,Car 4,Car 5

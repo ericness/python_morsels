@@ -1,4 +1,4 @@
-from collections import defaultdict
+from collections import defaultdict, OrderedDict
 import csv
 from typing import TextIO, Dict
 
@@ -14,4 +14,8 @@ def csv_columns(file: TextIO) -> Dict:
             for j, value in enumerate(row):
                 values[j].append(value)
 
-    return {k: v for k, v in zip(keys, values.values())}
+    result = OrderedDict()
+
+    for k, v in zip(keys, values.values()):
+        result[k] = v
+    return result
