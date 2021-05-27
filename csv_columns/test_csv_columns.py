@@ -76,7 +76,6 @@ class CSVColumnsTests(unittest.TestCase):
         self.assertEqual(list(csv_columns(StringIO(csv_data)).items()), result)
 
     # To test the Bonus part of this exercise, comment out the following line
-    @unittest.expectedFailure
     def test_key_word_headers(self):
         result_with_given_headers = {
             'header1': ['1', '3'],
