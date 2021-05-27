@@ -91,7 +91,6 @@ class CSVColumnsTests(unittest.TestCase):
         self.assertEqual(csv_columns(csv_file), result_with_default)
 
     # To test the Bonus part of this exercise, comment out the following line
-    @unittest.expectedFailure
     def test_allow_missing_items(self):
         result_zero_given = {'h1': ['1', '3', '5'], 'h2': ['2', '4', '0']}
         result_nothing_given = {'h1': ['1', '3', '5'], 'h2': ['2', '4', None]}

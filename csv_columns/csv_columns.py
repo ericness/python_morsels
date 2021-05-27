@@ -3,7 +3,7 @@ import csv
 from typing import TextIO, Dict, List
 
 
-def csv_columns(file: TextIO, headers: List[str] = None) -> Dict:
+def csv_columns(file: TextIO, headers: List[str] = None, missing: str = None) -> Dict:
     """Map column headers to lists of values"""
     values = defaultdict(list)
     csv_reader = csv.reader(file)
@@ -12,9 +12,11 @@ def csv_columns(file: TextIO, headers: List[str] = None) -> Dict:
             keys = row
         elif i == 0 and headers:
             keys = headers
+            row.extend([missing] * (len(keys) - len(row)))
             for j, value in enumerate(row):
                 values[j].append(value)
         else:
+            row.extend([missing] * (len(keys) - len(row)))
             for j, value in enumerate(row):
                 values[j].append(value)
 
