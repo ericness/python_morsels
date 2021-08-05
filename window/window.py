@@ -4,7 +4,11 @@ from typing import Iterable, List
 
 def window(iterable: Iterable, size: int) -> List:
     """Create tuple windows"""
-    result = []
-    for i in range(len(iterable) - size + 1):
-        result.append(tuple(iterable[i:i+size]))
-    return result
+    pending_results = [[] for _ in range(size)]
+    for element in iterable:
+        for tup in pending_results:
+            tup.append(element)
+        current = pending_results.pop(0)
+        if len(current) == size:
+            yield tuple(current)
+        pending_results.append([])
