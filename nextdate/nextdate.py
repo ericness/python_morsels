@@ -13,12 +13,14 @@ class Weekday(Enum):
 
 
 class NextDate():
-    def __init__(self, weekday: Weekday):
+    def __init__(self, weekday: Weekday, after_today: bool = False):
         self.weekday = weekday
+        self.after_today = after_today
     
     def days_until(self) -> int:
         """Number of days until specified weekday"""
-        return (self.weekday.value - date.today().weekday()) % 7
+        until = (self.weekday.value - date.today().weekday()) % 7
+        return 7 if until == 0 and self.after_today else until
     
     def date(self) -> date:
         """Return date of next specified weekday"""
@@ -26,4 +28,4 @@ class NextDate():
         return date.today() + timedelta(days=until)
 
     def __repr__(self) -> str:
-        return f"NextDay(Weekday.{self.weekday.name})"
+        return f"NextDay(Weekday.{self.weekday.name},after_today={self.after_today})"
