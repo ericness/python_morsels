@@ -24,3 +24,6 @@ class NextDate():
         """Return date of next specified weekday"""
         until = self.days_until()
         return date.today() + timedelta(days=until)
+
+    def __repr__(self) -> str:
+        return "NextDay({})"
