@@ -26,4 +26,4 @@ class NextDate():
         return date.today() + timedelta(days=until)
 
     def __repr__(self) -> str:
-        return "NextDay({})"
+        return f"NextDay(Weekday.{self.weekday.name})"

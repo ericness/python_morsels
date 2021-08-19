@@ -48,7 +48,6 @@ class NextDateTests(unittest.TestCase):
         self.assertEqual(NextDate(Weekday.WEDNESDAY).days_until(), 1)
 
     # To test the Bonus part of this exercise, comment out the following line
-    @unittest.expectedFailure
     def test_nice_string_representation(self):
         self.set_date(2019, 9, 3)  # Tuesday
         monday = NextDate(Weekday.MONDAY)
