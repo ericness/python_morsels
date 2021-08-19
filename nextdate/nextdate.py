@@ -1,3 +1,4 @@
+import functools
 from datetime import date, timedelta
 from enum import Enum
 
@@ -29,3 +30,19 @@ class NextDate():
 
     def __repr__(self) -> str:
         return f"NextDay(Weekday.{self.weekday.name},after_today={self.after_today})"
+
+
+def days_until(day: Weekday, after_today: bool = False) -> int:
+    """Number of days until specified weekday"""
+    until = (day.value - date.today().weekday()) % 7
+    return 7 if until == 0 and after_today else until
+
+
+def next_date(day: Weekday, after_today: bool = False) -> date:
+        """Return date of next specified weekday"""
+        until = days_until(day, after_today=after_today)
+        return date.today() + timedelta(days=until)
+
+
+next_tuesday = functools.partial(next_date, Weekday.TUESDAY)
+days_to_tuesday = functools.partial(days_until, Weekday.TUESDAY)

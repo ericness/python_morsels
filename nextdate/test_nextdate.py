@@ -77,7 +77,6 @@ class NextDateTests(unittest.TestCase):
 
 
 # To test the Bonus part of this exercise, comment out the following line
-@unittest.expectedFailure
 class FunctionTests(unittest.TestCase):
 
     """Tests for next_date and days_until."""
