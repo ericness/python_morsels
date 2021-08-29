@@ -36,7 +36,6 @@ class PointTests(unittest.TestCase):
         self.assertFalse(p1 == p3)
 
     # To test the Bonus part of this exercise, comment out the following line
-    @unittest.expectedFailure
     def test_shifting(self):
         p1 = Point(1, 2, 3)
         p2 = Point(4, 5, 6)
