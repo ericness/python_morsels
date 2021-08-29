@@ -53,7 +53,6 @@ class PointTests(unittest.TestCase):
         self.assertEqual((p3.x, p3.y, p3.z), (3, 6, 9))
 
     # To test the Bonus part of this exercise, comment out the following line
-    @unittest.expectedFailure
     def test_iterable_point(self):
         point = Point(x=1, y=2, z=3)
         x, y, z = point

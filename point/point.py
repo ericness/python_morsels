@@ -24,3 +24,8 @@ class Point:
 
     def __rmul__(self, scale:int) -> Point:
         return self * scale
+
+    def __iter__(self):
+        yield self.x
+        yield self.y
+        yield self.z
