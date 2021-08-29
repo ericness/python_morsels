@@ -18,3 +18,9 @@ class Point:
 
     def __sub__(self, other: Point) -> Point:
         return Point(self.x - other.x, self.y - other.y, self.z - other.z)
+
+    def __mul__(self, scale: int) -> Point:
+        return Point(self.x * scale, self.y * scale, self.z * scale)
+
+    def __rmul__(self, scale:int) -> Point:
+        return self * scale
