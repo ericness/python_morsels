@@ -20,7 +20,6 @@ class ParseRangesTests(unittest.TestCase):
         )
 
     # To test the Bonus part of this exercise, comment out the following line
-    @unittest.expectedFailure
     def test_return_iterator(self):
         numbers = parse_ranges('0-0, 4-8, 20-21, 43-45')
         self.assertEqual(next(numbers), 0)
