@@ -36,7 +36,6 @@ class ParseRangesTests(unittest.TestCase):
         )
 
     # To test the Bonus part of this exercise, comment out the following line
-    @unittest.expectedFailure
     def test_ignore_arrows(self):
         self.assertEqual(
             list(parse_ranges('0, 4-8, 20->exit, 43-45')),
