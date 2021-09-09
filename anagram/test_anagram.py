@@ -40,7 +40,6 @@ class IsAnagramTests(unittest.TestCase):
         self.assertTrue(is_anagram(phrase1, phrase2))
 
     # To test the Bonus part of this exercise, comment out the following line
-    @unittest.expectedFailure
     def test_characters_with_accents(self):
         self.assertTrue(is_anagram("Siobhán Donaghy", "Shanghai Nobody"))
 
