@@ -5,7 +5,6 @@ from typing import Iterable
 
 def chunked(sequence: Iterable, n: int):
     """Chunk elements into lists"""
-    result = []
     nested = []
     i = 0
     for element in sequence:
@@ -13,8 +12,7 @@ def chunked(sequence: Iterable, n: int):
         i += 1
         if i == n:
             i = 0
-            result.append(nested)
+            yield nested
             nested = []
     if nested:
-        result.append(nested)
-    return result
+        yield nested

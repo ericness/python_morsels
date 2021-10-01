@@ -59,7 +59,6 @@ class ChunkedTests(unittest.TestCase):
         )
 
     # To test the Bonus part of this exercise, comment out the following line
-    @unittest.expectedFailure
     def test_iterator_returned(self):
         squares = (n**2 for n in range(10))
         output = chunked(squares, 4)
