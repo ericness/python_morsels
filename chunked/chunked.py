@@ -1,9 +1,11 @@
 import itertools
 import math
-from typing import Iterable
+from typing import Iterable, Any
+
+FILL = object()
 
 
-def chunked(sequence: Iterable, n: int):
+def chunked(sequence: Iterable, n: int, *, fill: Any = FILL):
     """Chunk elements into lists"""
     nested = []
     i = 0
@@ -15,4 +17,7 @@ def chunked(sequence: Iterable, n: int):
             yield nested
             nested = []
     if nested:
+        if fill != FILL:
+            for _ in range(n - len(nested)):
+                nested.append(fill)
         yield nested

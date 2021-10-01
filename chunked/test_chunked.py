@@ -66,7 +66,6 @@ class ChunkedTests(unittest.TestCase):
         self.assertEqual(next(squares), 16)
 
     # To test the Bonus part of this exercise, comment out the following line
-    @unittest.expectedFailure
     def test_fill_value_given(self):
         self.assertNestedIterableEqual(
             chunked((n**2 for n in range(10)), 4, fill=0),
