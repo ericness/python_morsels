@@ -52,7 +52,6 @@ class ChunkedTests(unittest.TestCase):
         )
 
     # To test the Bonus part of this exercise, comment out the following line
-    @unittest.expectedFailure
     def test_chunking_non_sequences(self):
         self.assertNestedIterableEqual(
             chunked((n**2 for n in range(10)), 4),

@@ -1,11 +1,20 @@
 import itertools
 import math
-from typing import Sequence
+from typing import Iterable
 
 
-def chunked(sequence: Sequence, n: int):
+def chunked(sequence: Iterable, n: int):
     """Chunk elements into lists"""
-    return [
-        itertools.islice(sequence, i * n, i * n + n)
-        for i in range(math.ceil(len(sequence) / n))
-    ]
+    result = []
+    nested = []
+    i = 0
+    for element in sequence:
+        nested.append(element)
+        i += 1
+        if i == n:
+            i = 0
+            result.append(nested)
+            nested = []
+    if nested:
+        result.append(nested)
+    return result
