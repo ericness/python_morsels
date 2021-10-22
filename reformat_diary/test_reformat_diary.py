@@ -67,7 +67,6 @@ class EntriesByDateTests(unittest.TestCase):
         ])
 
     # To test the Bonus part of this exercise, comment out the following line
-    @unittest.expectedFailure
     def test_clean_HTML_from_entries(self):
         diary = StringIO(dedent("""
             2018-01-01
