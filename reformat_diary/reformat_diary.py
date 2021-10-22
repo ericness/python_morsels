@@ -1,3 +1,4 @@
+import pathlib
 import re
 from typing import IO, List, Tuple
 
@@ -30,3 +31,13 @@ def entries_by_date(diary_file: IO) -> List[Tuple]:
     
     entries.append((current_entry[0], "\n\n".join(current_entry[1:])))
     return entries
+
+
+def main(diary_filename: str):
+    diary_path = pathlib.Path(diary_filename)
+    with diary_path.open() as dp:
+        entries = entries_by_date(dp)
+    for entry_date, entry_text in entries:
+        entry_path = pathlib.Path(f"{entry_date}.txt")
+        with entry_path.open("a") as ep:
+            ep.write(entry_text)
