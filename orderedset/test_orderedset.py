@@ -52,7 +52,6 @@ class OrderedSetTests(unittest.TestCase):
         self.assertNotIn(3, numbers)
 
     # To test the Bonus part of this exercise, comment out the following line
-    @unittest.expectedFailure
     def test_memory_and_time_efficient(self):
         # Time efficient construction
         time = partial(timeit, globals=globals(), number=75)
