@@ -1,4 +1,4 @@
-from typing import Iterable, List
+from typing import Any, Iterable, List
 
 
 class OrderedSet(List):
@@ -30,3 +30,13 @@ class OrderedSet(List):
 
     def __ne__(self, o: object) -> bool:
         return not self.__eq__(o)
+
+    def add(self, element: Any):
+        if element not in self.elements:
+            self.append(element)
+            self.elements.add(element)
+
+    def discard(self, element: Any):
+        if element in self.elements:
+            self.remove(element)
+            self.elements.remove(element)

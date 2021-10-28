@@ -83,7 +83,6 @@ class OrderedSetTests(unittest.TestCase):
         self.assertNotEqual(OrderedSet('abc'), ['a', 'b', 'c'])
 
     # To test the Bonus part of this exercise, comment out the following line
-    @unittest.expectedFailure
     def test_add_and_discard(self):
         numbers = OrderedSet([1, 2, 3])
         numbers.add(3)
