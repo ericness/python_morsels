@@ -19,11 +19,14 @@ class OrderedSet(List):
         return o in self.elements
 
     def __eq__(self, o: object) -> bool:
+        if isinstance(o, list) and not isinstance(o, OrderedSet):
+            return False
         if isinstance(o, OrderedSet):
             return super().__eq__(o)
         elif isinstance(o, set):
             return o == self.elements
-        elif isinstance(o, list):
-            return False
         else:
             return False
+
+    def __ne__(self, o: object) -> bool:
+        return not self.__eq__(o)
