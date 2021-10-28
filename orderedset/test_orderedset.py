@@ -73,7 +73,6 @@ class OrderedSetTests(unittest.TestCase):
         self.assertGreater(beginning_lookup*350, not_in_lookup)
 
     # To test the Bonus part of this exercise, comment out the following line
-    @unittest.expectedFailure
     def test_equality(self):
         self.assertEqual(OrderedSet('abc'), OrderedSet('abc'))
         self.assertNotEqual(OrderedSet('abc'), OrderedSet('bac'))
