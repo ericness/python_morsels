@@ -3,6 +3,7 @@ from typing import Any, Iterable, List
 
 class OrderedSet(List):
     """Set collection that keeps element order"""
+
     def __init__(self, input: Iterable = None):
         self.elements = set()
         if not input:
@@ -13,7 +14,7 @@ class OrderedSet(List):
                 self.elements.add(element)
 
     def __repr__(self) -> str:
-        return f"OrderedSet({super().__repr__()})" 
+        return f"OrderedSet({super().__repr__()})"
 
     def __contains__(self, o: object) -> bool:
         return o in self.elements
