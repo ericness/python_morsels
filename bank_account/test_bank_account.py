@@ -42,7 +42,6 @@ class BankAccountTests(unittest.TestCase):
         self.assertEqual(dana_account.balance, 20)
 
     # To test the Bonus part of this exercise, comment out the following line
-    @unittest.expectedFailure
     def test_deposit_and_withdraw_validation(self):
         mary_account = BankAccount(balance=100)
         # Can't start with negative balance
