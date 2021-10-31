@@ -119,7 +119,6 @@ class BankAccountTests(unittest.TestCase):
         self.assertNotEqual(account2.number, account3.number)
 
     # To test the Bonus part of this exercise, comment out the following line
-    @unittest.expectedFailure
     def test_balance_cannot_be_written(self):
         account1 = BankAccount()
         account2 = BankAccount(100)
