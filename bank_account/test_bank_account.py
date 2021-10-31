@@ -88,7 +88,6 @@ class BankAccountTests(unittest.TestCase):
         self.assertEqual(dana_account.balance, 90)
 
     # To test the Bonus part of this exercise, comment out the following line
-    @unittest.expectedFailure
     def test_account_number_and_accounts_registry(self):
         # Re-import the BankAccount class
         import importlib
