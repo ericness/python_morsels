@@ -1,6 +1,14 @@
 import re
 
-PHONE_NUMBER_REGEX = re.compile(r"^[^a-zA-Z0-9]*([0-9]{3})[^a-zA-Z0-9]*([0-9]{3})[^a-zA-Z0-9]*([0-9]{4})[^a-zA-Z0-9]*$")
+PHONE_NUMBER_REGEX = re.compile(r"""
+    ^[^a-zA-Z0-9]*
+    ([0-9]{3})     # area code
+    [^a-zA-Z0-9]*
+    ([0-9]{3})     # prefix
+    [^a-zA-Z0-9]*
+    ([0-9]{4})     # line number
+    [^a-zA-Z0-9]*$
+""", re.VERBOSE)
 
 
 class PhoneNumber:
