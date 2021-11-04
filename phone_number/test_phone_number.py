@@ -34,7 +34,6 @@ class PhoneNumberTests(unittest.TestCase):
         self.assertEqual(str(PhoneNumber("716 . 776 . 2323")), "716-776-2323")
 
     # To test the Bonus part of this exercise, comment out the following line
-    @unittest.expectedFailure
     def test_non_phone_numbers(self):
         with self.assertRaises(ValueError):
             PhoneNumber("57167762323")
