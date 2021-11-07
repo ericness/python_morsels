@@ -52,7 +52,6 @@ class PhoneNumberTests(unittest.TestCase):
         self.assertEqual(str(PhoneNumber("716 7762323")), "716-776-2323")
 
     # To test the Bonus part of this exercise, comment out the following line
-    @unittest.expectedFailure
     def test_equality_and_immutability(self):
         n1 = PhoneNumber("716 776 2323")
         n2 = PhoneNumber("(212) 664-7665")
