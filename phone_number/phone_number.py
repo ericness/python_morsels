@@ -34,6 +34,32 @@ class PhoneNumber:
     def __str__(self) -> str:
         return f"{self.area_code}-{self.prefix}-{self.line_number}"
 
+    def __format__(self, format: str) -> str:
+        if "(" in format:
+            return f"({self.area_code}) {self.prefix}-{self.line_number}"
+        separator = "-"
+        if "." in format:
+            separator = " . " if " " in format else "."
+        elif "-" in format:
+            separator = " - " if " " in format else "-"
+        elif " " in format:
+            separator = " "
+        else:
+            separator = "-"
+        if "+" in format:
+            country_code = "+1"
+            if " " not in format:
+                separator = ""
+
+        else:
+            country_code = ""
+
+        if country_code:
+            components = [country_code, self.area_code, self.prefix, self.line_number] 
+        else:
+            components = [self.area_code, self.prefix, self.line_number] 
+        return separator.join(components)
+            
     def __eq__(self, other: PhoneNumber) -> bool:
         if not isinstance(other, PhoneNumber):
             return False
