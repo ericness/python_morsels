@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass
 import re
 
 PHONE_NUMBER_REGEX = re.compile(r"""
@@ -12,6 +13,7 @@ PHONE_NUMBER_REGEX = re.compile(r"""
 """, re.VERBOSE)
 
 
+@dataclass(frozen=True, init=False)
 class PhoneNumber:
     """Stores a US phone number"""
 
@@ -19,22 +21,13 @@ class PhoneNumber:
         matches = PHONE_NUMBER_REGEX.search(number)
         if not matches:
             raise ValueError('Invalid phone number')
-        self._area_code = matches.group(1)
-        self._prefix = matches.group(2)
-        self._line_number = matches.group(3)
+        object.__setattr__(self, "area_code", matches.group(1))
+        object.__setattr__(self, "prefix", matches.group(2))
+        object.__setattr__(self, "line_number", matches.group(3))
 
-    @property
-    def area_code(self) -> str:
-        return self._area_code
-
-    @property
-    def prefix(self) -> str:
-        return self._prefix
-
-    @property
-    def line_number(self) -> str:
-        return self._line_number
-
+    def __hash__(self):
+        return hash((self.area_code, self.prefix, self.line_number))
+ 
     def __repr__(self) -> str:
         return f"{self.__class__.__name__}('{self.area_code}{self.prefix}{self.line_number}')"
 
