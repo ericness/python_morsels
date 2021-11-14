@@ -1,9 +1,8 @@
 from typing import List
 
 
-def format_fixed_width(rows: List[List[str]]) -> str:
+def format_fixed_width(rows: List[List[str]], padding: int = 2) -> str:
     """Format rows of strings as fixed width columns"""
-    padding = 2
     column_widths = [max(map(len, elements)) for elements in zip(*rows)]
     result = ""
     for row in rows:
