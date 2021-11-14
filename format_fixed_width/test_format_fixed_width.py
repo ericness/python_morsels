@@ -113,7 +113,6 @@ class FormatFixedWidthTests(unittest.TestCase):
         )
 
     # To test the Bonus part of this exercise, comment out the following line
-    @unittest.expectedFailure
     def test_column_alignments(self):
         self.assertEqual(
             format_fixed_width([
