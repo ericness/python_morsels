@@ -1,3 +1,4 @@
+import shlex
 from typing import Dict, Tuple
 
 
@@ -13,12 +14,16 @@ def process_tag(tag: str) -> Tuple[str, Dict[str, str]]:
     opening_tag: str = ""
     attributes: Dict[str, str] = {}
 
-    for index, element in enumerate(map(str.lower, tag.split(" "))):
+    for index, element in enumerate(map(str.lower, shlex.split(tag))):
         if index == 0:
             opening_tag = element.lstrip("<")
-        elif "=" in element:
-            attribute, value = element.rstrip(">").split("=")
-            attributes[attribute] = value
+        else:
+            if "=" in element:
+                attribute, value = element.rstrip(">").split("=")
+            else:
+                attribute, value = element.rstrip(">"), None
+            if attribute not in attributes:
+                attributes[attribute] = value
     
     return opening_tag, attributes
         
