@@ -20,6 +20,6 @@ def minmax(values: Iterable, *, key: Callable = lambda x: x) -> Tuple:
         if current_max is None or key(value) > key(current_max):
             current_max = value
     
-    if not current_min and not current_max:
+    if current_min is None and current_max is None:
         raise ValueError("Can't find minimum and maximum of an empty set")
     return current_min, current_max
