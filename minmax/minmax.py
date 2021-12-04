@@ -11,15 +11,20 @@ def minmax(values: Iterable, *, key: Callable = lambda x: x) -> Tuple:
     Returns:
         Tuple: Min and max values
     """
-    current_min = None
-    current_max = None
+    min_value = None
+    max_value = None
+    min_key = None
+    max_key = None
 
-    for value in values:
-        if current_min is None or key(value) < key(current_min):
-            current_min = value
-        if current_max is None or key(value) > key(current_max):
-            current_max = value
-    
-    if current_min is None and current_max is None:
+    for current_value in values:
+        current_key = key(current_value)
+        if min_value is None or current_key < min_key:
+            min_value = current_value
+            min_key = current_key
+        if max_value is None or current_key > max_key:
+            max_value = current_value
+            max_key = current_key
+
+    if min_value is None and max_value is None:
         raise ValueError("Can't find minimum and maximum of an empty set")
-    return current_min, current_max
+    return min_value, max_value
