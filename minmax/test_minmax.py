@@ -45,7 +45,6 @@ class MinMaxTests(unittest.TestCase):
             minmax([])
 
     # To test the Bonus part of this exercise, comment out the following line
-    @unittest.expectedFailure
     def test_key_functions(self):
         words = ["alfalfa", "animal", "apple", "acoustic"]
         self.assertIterableEqual(minmax(words, key=len), ("apple", "acoustic"))
