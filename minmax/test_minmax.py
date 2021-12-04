@@ -57,7 +57,6 @@ class MinMaxTests(unittest.TestCase):
             minmax([1], lambda x: x)  # key must be a keyword-only argument
 
     # To test the Bonus part of this exercise, comment out the following line
-    @unittest.expectedFailure
     def test_with_non_lists(self):
         self.assertIterableEqual(minmax((89, 17, 70, 9)), (9, 89))
         self.assertIterableEqual(minmax({8, 7, 5, 3, 9, 6, 2}), (2, 9))

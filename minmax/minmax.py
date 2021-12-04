@@ -1,16 +1,25 @@
-from typing import Callable, List, Tuple
+from typing import Callable, Iterable, Tuple
 
 
-def minmax(values: List, *, key: Callable = None) -> Tuple:
+def minmax(values: Iterable, *, key: Callable = lambda x: x) -> Tuple:
     """Find the minimum and maximum values in a list.
 
     Args:
-        values (List): List of values
+        values (Iterable): List of values
         key (Callable): Function for sorting
 
     Returns:
         Tuple: Min and max values
     """
-    if len(values) == 0:
+    current_min = None
+    current_max = None
+
+    for value in values:
+        if current_min is None or key(value) < key(current_min):
+            current_min = value
+        if current_max is None or key(value) > key(current_max):
+            current_max = value
+    
+    if not current_min and not current_max:
         raise ValueError("Can't find minimum and maximum of an empty set")
-    return min(values, key=key), max(values, key=key)
+    return current_min, current_max
