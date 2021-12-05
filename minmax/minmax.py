@@ -1,7 +1,11 @@
+from collections import namedtuple
 from typing import Callable, Iterable, Tuple
 
 
-def minmax(values: Iterable, *, key: Callable = lambda x: x) -> Tuple:
+MinMax = namedtuple("MinMax", ["min", "max"])
+
+
+def minmax(values: Iterable, *, key: Callable = lambda x: x) -> MinMax:
     """Find the minimum and maximum values in a list.
 
     Args:
@@ -9,7 +13,7 @@ def minmax(values: Iterable, *, key: Callable = lambda x: x) -> Tuple:
         key (Callable): Function for sorting
 
     Returns:
-        Tuple: Min and max values
+        MinMax: Min and max values
     """
     min_value = None
     max_value = None
@@ -27,4 +31,4 @@ def minmax(values: Iterable, *, key: Callable = lambda x: x) -> Tuple:
 
     if min_value is None and max_value is None:
         raise ValueError("Can't find minimum and maximum of an empty set")
-    return min_value, max_value
+    return MinMax(min_value, max_value)

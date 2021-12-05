@@ -65,7 +65,6 @@ class MinMaxTests(unittest.TestCase):
             minmax(iter([]))
 
     # To test the Bonus part of this exercise, comment out the following line
-    @unittest.expectedFailure
     def test_response_min_and_max_attributes(self):
         words = ["alfalfa", "animal", "apple", "acoustic", "axiom"]
         output = minmax(words)
