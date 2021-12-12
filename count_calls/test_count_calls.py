@@ -20,7 +20,6 @@ class CountCallsTests(unittest.TestCase):
         self.assertEqual(counter.calls, 2)
 
     # To test the Bonus part of this exercise, comment out the following line
-    @unittest.expectedFailure
     def test_accepts_and_calls_a_function(self):
         # Function value is returned
         def one(): return 1
