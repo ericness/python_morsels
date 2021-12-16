@@ -41,7 +41,6 @@ class CountCallsTests(unittest.TestCase):
         self.assertEqual(decorated.calls, 2)
 
     # To test the Bonus part of this exercise, comment out the following line
-    @unittest.expectedFailure
     def test_accepts_arguments(self):
         # Function accepts positional arguments
         @count_calls
@@ -73,7 +72,6 @@ class CountCallsTests(unittest.TestCase):
         self.assertEqual(my_func.calls, 2)
 
     # To test the Bonus part of this exercise, comment out the following line
-    @unittest.expectedFailure
     def test_docstring_and_name_preserved(self):
         import pydoc
         decorated = count_calls(example)
