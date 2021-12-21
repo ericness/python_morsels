@@ -55,7 +55,6 @@ class CyclicListTests(unittest.TestCase):
         self.assertEqual(numbers[1], 0)
 
     # To test the Bonus part of this exercise, comment out the following line
-    @unittest.expectedFailure
     def test_slice(self):
         numbers = CyclicList([1, 2, 3, 4, 5])
         self.assertEqual(numbers[:7], [1, 2, 3, 4, 5, 1, 2])

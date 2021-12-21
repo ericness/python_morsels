@@ -1,5 +1,5 @@
 import copy
-from typing import Any, Iterable
+from typing import Any, Iterable, Union
 
 
 class CyclicList:
@@ -27,7 +27,13 @@ class CyclicList:
     def pop(self, index: int = -1) -> Any:
         return self.iterable.pop(index)
 
-    def __getitem__(self, key: int) -> Any:
+    def __getitem__(self, key: Union[int, slice]) -> Any:
+        if isinstance(key, slice):
+            start = key.start if key.start else 0
+            stop = key.stop if key.stop else 0
+            if start == stop == 0:
+                stop = len(self)
+            return [self[index] for index in range(start, stop)]
         return self.iterable[key % len(self)]
 
     def __setitem__(self, key: int, value: Any):
